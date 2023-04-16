@@ -1,5 +1,5 @@
 const UserRepository = require("../repositories/userRepository");
-
+const bcrypt = require('bcryptjs');
 
 class UserService {
     constructor() {
@@ -15,12 +15,17 @@ class UserService {
     }
   
     async createUser(user) {
-      return await this.userRepository.create(user);
+        user.password = await bcrypt.hash(user.password, 10);
+        return await this.userRepository.create(user);
     }
   
     async updateUser(id, user) {
-      return await this.userRepository.update(id, user);
-    }
+        const updatedUser = await this.userRepository.update(id, user);
+        if (!updatedUser) {
+          return { success: false };
+        }
+        return { success: true, user: updatedUser };
+      }
   
     async deleteUser(id) {
       return await this.userRepository.delete(id);

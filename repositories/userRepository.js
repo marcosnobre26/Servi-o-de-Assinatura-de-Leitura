@@ -1,4 +1,5 @@
 const User = require('../models/UserModel');
+const debug = require('debug')('userRepository');
 
 class UserRepository {
     
@@ -18,11 +19,21 @@ class UserRepository {
     }
   
     async update(id, user) {
-      const [rowsUpdated, [updatedUser]] = await User.update(user, { where: { id }, returning: true });
-      if (rowsUpdated === 0) {
-        return null;
-      }
-      return updatedUser;
+        debug('update');
+        const updatedRows = await User.update(user, { where: { id } });
+        if (updatedRows[0] === 0) {
+            return null;
+        }
+        const updatedUser = await User.findByPk(id);
+        return updatedUser;
+    }
+
+    static async findByEmail(email) {
+        return await User.findOne({
+            where: {
+                email: email
+            }
+        });
     }
   
     async delete(id) {

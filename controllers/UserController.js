@@ -24,9 +24,10 @@ class UserController {
     
     async createUser(req, res, next) {
         try {
-            const { name, email } = req.body;
-            const user = await userService.createUser(name, email);
-            res.status(201).json(user);
+            const { name, email, password } = req.body;
+            const user = { name, email, password };
+            const createdUser = await userService.createUser(user);
+            res.status(201).json(createdUser);
         } catch (error) {
             next(error);
         }
@@ -35,9 +36,14 @@ class UserController {
     async updateUser(req, res, next) {
         try {
             const id = req.params.id;
-            const { name, email } = req.body;
-            const user = await userService.updateUser(id, name, email);
-            res.status(200).json(user);
+            const { name, email, password } = req.body;
+            const user = { name, email, password };
+            const updatedUser = await userService.updateUser(id, user);
+            if (updatedUser === null) {
+                res.status(404).send(`User with id ${id} not found`);
+            } else {
+                res.status(200).json(updatedUser);
+            }
         } catch (error) {
             next(error);
         }

@@ -1,12 +1,12 @@
 const express = require('express');
 const userRoutes = require('./userRoutes');
+const authRoutes = require('./authRoutes');
+const productRoutes = require('./productRoutes');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('API rodando!');
-});
-
 router.use('/users', userRoutes);
+router.use('/auth', authRoutes);
+router.use('/products', productRoutes);
 
 module.exports = router;

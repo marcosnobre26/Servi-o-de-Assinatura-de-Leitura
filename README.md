@@ -10,22 +10,37 @@ Para instalar as dependências do projeto, execute o seguinte comando no termina
 
 npm install
 
-arduino
-Copy code
+```bash
+$ npm install
+```
 
 ## Configuração do Banco de Dados
 
-Antes de executar o projeto, você precisará configurar o seu banco de dados. Abra o arquivo `config.json` na pasta `config` e insira as suas configurações de banco de dados, como o nome do banco de dados, nome de usuário e senha.
+Antes de executar o projeto, você precisará configurar o seu banco de dados. Abra o arquivo `config.json` na pasta `config` e insira as suas configurações de banco de dados, como o nome do banco de dados, nome de usuário e senha. No arquivo `database.js`, não se esqueça de especificar na linha 5, qual o banco de dados você deseja utilizar, como é mostrado nos exemplos abaixo:
 
 ```json
 {
   "development": {
-    "dialect": "mysql",
-    "host": "localhost",
-    "username": "root",
-    "password": "",
-    "database": "crud"
-  }
+        "username": "root",
+        "password": "",
+        "database": "crud",
+        "host": "localhost",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": "",
+        "database": "crud",
+        "host": "localhost",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "root",
+        "password": "",
+        "database": "crud",
+        "host": "localhost",
+        "dialect": "mysql"
+    }
 }
 ```
 

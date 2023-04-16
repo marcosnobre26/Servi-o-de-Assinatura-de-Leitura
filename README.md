@@ -1,4 +1,4 @@
-# Projeto Node.js com Banco de Dados
+# Projeto Entrega e Assinatura de Produtos:
 
 Este é um projeto básico que mostra como usar o Node.js com o banco de dados MySQL. Ele inclui exemplos de migrations, seeds e consultas básicas ao banco de dados.
 

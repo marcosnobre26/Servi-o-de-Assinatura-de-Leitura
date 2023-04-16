@@ -27,6 +27,7 @@ Antes de executar o projeto, você precisará configurar o seu banco de dados. A
     "database": "crud"
   }
 }
+
 Migrations
 As migrations são usadas para criar tabelas e modificar a estrutura do banco de dados. Para criar uma migration, execute o seguinte comando no terminal:
 

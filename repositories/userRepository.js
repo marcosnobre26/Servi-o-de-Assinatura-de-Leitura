@@ -44,5 +44,5 @@ class UserRepository {
     }
 }
 
-// Exporta uma instância da classe
-module.exports = new UserRepository();
+// Exporta a classe diretamente, sem criar uma instância
+module.exports = UserRepository;

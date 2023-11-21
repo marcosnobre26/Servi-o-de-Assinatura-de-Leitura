@@ -13,6 +13,15 @@ class AuthController {
         return res.status(400).json({ error: err.message });
       }
     }
+
+    async indextest(req, res, next) {
+      try {
+          const users = await 'test users by AWS';
+          res.status(200).json(users);
+      } catch (error) {
+          next(error);
+      }
+    }
   }
 
 module.exports = new AuthController();

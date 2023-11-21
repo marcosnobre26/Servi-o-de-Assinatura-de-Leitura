@@ -2,22 +2,21 @@ const User = require('../models/UserModel');
 const debug = require('debug')('userRepository');
 
 class UserRepository {
-    
     async findAll() {
-      const users = await User.findAll();
-      return users;
+        const users = await User.findAll();
+        return users;
     }
-  
+
     async findById(id) {
-      const user = await User.findByPk(id);
-      return user;
+        const user = await User.findByPk(id);
+        return user;
     }
-  
+
     async create(user) {
-      const newUser = await User.create(user);
-      return newUser;
+        const newUser = await User.create(user);
+        return newUser;
     }
-  
+
     async update(id, user) {
         debug('update');
         const updatedRows = await User.update(user, { where: { id } });
@@ -35,14 +34,15 @@ class UserRepository {
             }
         });
     }
-  
+
     async delete(id) {
-      const rowsDeleted = await User.destroy({ where: { id } });
-      if (rowsDeleted === 0) {
-        return null;
-      }
-      return;
+        const rowsDeleted = await User.destroy({ where: { id } });
+        if (rowsDeleted === 0) {
+            return null;
+        }
+        return;
     }
 }
-  
-module.exports = UserRepository;
+
+// Exporta uma instância da classe
+module.exports = new UserRepository();

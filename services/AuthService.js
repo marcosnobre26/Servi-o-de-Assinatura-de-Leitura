@@ -12,6 +12,7 @@ class AuthService {
 
         // Verifique se a senha está correta
         const isPasswordValid = await bcrypt.compare(password, user.password);
+        console.log('Is password?:', isPasswordValid);
         if (!isPasswordValid) {
             throw new Error('Email or password invalid');
         }

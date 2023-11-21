@@ -4,30 +4,27 @@ const UserRepository = require("../repositories/userRepository");
 
 class AuthService {
     static async login({ email, password }) {
-        // Encontre o usuário pelo email usando a função estática
-        const user = await UserRepository.findByEmail(email);
-        if (!user) {
-            throw new Error('Email or password invalid');
-        }
+        try {
+            const user = await UserRepository.findByEmail(email);
 
-        // Verifique se a senha está correta
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log('Is password?:', isPasswordValid);
-        if (!isPasswordValid) {
-            throw new Error('Email or password invalid');
-        }
-        console.log('User Object:', user);
-        console.log('JWT Secret:', process.env.JWT_SECRET);
-        // Gere o token JWT
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' }, (error, signedToken) => {
-            if (error) {
-                console.error('Error signing token:', error);
-            } else {
-                console.log('Token:', signedToken);
+            if (!user) {
+                throw new Error('Email or password invalid');
             }
-        });
-        console.log('Token:', token);
-        return token;
+
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+
+            if (!isPasswordValid) {
+                throw new Error('Email or password invalid');
+            }
+
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            console.log('Token generated successfully:', token);
+
+            return token;
+        } catch (error) {
+            console.error('Error during login:', error);
+            throw error; // Re-throw the error to be caught by the calling function
+        }
     }
 
     static async create({ name, email, password }) {

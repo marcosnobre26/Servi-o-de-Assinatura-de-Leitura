@@ -17,8 +17,9 @@ class AuthService {
                 throw new Error('Email or password invalid');
             }
 
-            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            console.log('Token generated successfully:', token);
+            console.log('JWT Secret:', process.env.JWT_SECRET);
+const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+console.log('Generated Token:', token);
 
             return token;
         } catch (error) {

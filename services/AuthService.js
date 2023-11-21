@@ -18,8 +18,12 @@ class AuthService {
             }
 
             console.log('JWT Secret:', process.env.JWT_SECRET);
-const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-console.log('Generated Token:', token);
+            try {
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            console.log('Generated Token:', token);
+            } catch (error) {
+            console.error('Error during jwt.sign:', error);
+            }
 
             return token;
         } catch (error) {

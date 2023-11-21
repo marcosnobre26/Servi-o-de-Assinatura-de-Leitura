@@ -8,13 +8,13 @@ class AuthService {
             // Encontre o usuário pelo email usando a função estática
             const user = await UserRepository.findByEmail(email);
             if (!user) {
-                throw new Error('Email or password invalid');
+                throw new Error('Email or password invalid!');
             }
 
             // Verifique se a senha está correta
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if (!isPasswordValid) {
-                throw new Error('Email or password invalid');
+                throw new Error('Email or password invalid!');
             }
 
             // Gere o token JWT

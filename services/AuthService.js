@@ -15,9 +15,9 @@ class AuthService {
         if (!isPasswordValid) {
             throw new Error('Email or password invalid');
         }
-        console.log('passou da senha');
+        
         // Gere o token JWT
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });console.log(token);
         return token;
     }
 

@@ -25,11 +25,11 @@ class UserService {
           return { success: false };
         }
         return { success: true, user: updatedUser };
-      }
+    }
   
     async deleteUser(id) {
       return await this.userRepository.delete(id);
     }
-  }
+}
   
-  module.exports = UserService;
+module.exports = UserService;

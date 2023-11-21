@@ -16,7 +16,7 @@ class AuthController {
 
     async indextest(req, res, next) {
       try {
-          const users = await 'test users by AWS';
+          const users = await 'Marcos Nobre Aprendendo AWS';
           res.status(200).json(users);
       } catch (error) {
           next(error);

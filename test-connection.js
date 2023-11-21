@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const config = require('./caminho/para/config.json'); // Atualize o caminho conforme necessário
+const config = require('./config/config.json'); // Atualize o caminho conforme necessário
 
 const { username, password, database, host, dialect } = config.production;
 const sequelize = new Sequelize(database, username, password, {

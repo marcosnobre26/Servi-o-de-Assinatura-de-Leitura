@@ -3,7 +3,7 @@
         "username": "admin",
         "password": "nobre2808",
         "database": "crud",
-        "host": "localhost",
+        "host": "crud.c2mwjvdione4.sa-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     },
     "test": {

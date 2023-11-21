@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const UserRepository = require("../repositories/userRepository");
 
 class AuthService {
-    static async login({ email, password }) {
+    static async login({ email, password }) {console.log('chegou aqui');
         // Encontre o usuário pelo email usando a função estática
         const user = await UserRepository.findByEmail(email);
         if (!user) {
@@ -20,7 +20,7 @@ class AuthService {
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         return token;
     }
-    
+
     static async create({ name, email, password }) {
         // Faça a lógica de validação se necessário
 

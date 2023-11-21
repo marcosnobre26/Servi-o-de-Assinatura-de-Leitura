@@ -3,21 +3,24 @@
         "username": "admin",
         "password": "nobre2808",
         "database": "crud",
+        "port":3306,
         "host": "crud.c2mwjvdione4.sa-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     },
     "test": {
-        "username": "root",
-        "password": "",
+        "username": "admin",
+        "password": "nobre2808",
         "database": "crud",
-        "host": "localhost",
+        "port":3306,
+        "host": "crud.c2mwjvdione4.sa-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": "",
+        "username": "admin",
+        "password": "nobre2808",
         "database": "crud",
-        "host": "localhost",
+        "port":3306,
+        "host": "crud.c2mwjvdione4.sa-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 }

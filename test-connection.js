@@ -3,8 +3,12 @@ const config = require('./config/config.json'); // Atualize o caminho conforme n
 
 const { username, password, database, host, dialect } = config.production;
 const sequelize = new Sequelize(database, username, password, {
-  host,
-  dialect,
+    host,
+    dialect,
+    pool: {
+      acquire: 60000, // Aumentado para 60 segundos
+      idle: 30000,
+    },
 });
 
 // Teste de conexão

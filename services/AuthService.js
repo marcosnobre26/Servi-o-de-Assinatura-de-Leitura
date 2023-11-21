@@ -18,7 +18,13 @@ class AuthService {
         console.log('User Object:', user);
         console.log('JWT Secret:', process.env.JWT_SECRET);
         // Gere o token JWT
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' }, (error, signedToken) => {
+            if (error) {
+                console.error('Error signing token:', error);
+            } else {
+                console.log('Token:', signedToken);
+            }
+        });
         console.log('Token:', token);
         return token;
     }

@@ -84,3 +84,16 @@ Com as seeds devidamente executadas, você pode realizar o login utilizando as c
 }
 ```
 
+Produtos
+Crie produtos para associar assinaturas aos clientes com a rota POST: http://localhost:3000/api/products/
+
+```json
+{
+  "name": "Netflix",
+  "price": "2.1",
+  "description": "Um dos melhores serviços de streaming",
+  "url_image" : "https://paraibaja.com.br/wp-content/uploads/2023/10/netflix-br.jpg",
+  "status" : 1
+}
+```
+Você tambem pode visualizar estes produtos na rota rota GET: http://localhost:3000/api/products/

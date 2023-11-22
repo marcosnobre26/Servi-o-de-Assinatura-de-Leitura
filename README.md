@@ -63,6 +63,17 @@ Para executar o projeto, execute o seguinte comando no terminal:
 $ nodemon server.js
 ```
 
+Criação de Usuario
+Você pode criar um usuario colocando suas informações e disparando em uma rota POST: http://localhost:3000/api/auth/signup
+
+```json
+{
+    "name": "João Silva",
+    "email": "joao.silva@gmail.com",
+    "password": "secret1"
+}
+```
+
 Login e Autenticação
 Com as seeds devidamente executadas, você pode realizar o login utilizando as credenciais utilizando a rota POST: http://localhost:3000/api/auth/login
 

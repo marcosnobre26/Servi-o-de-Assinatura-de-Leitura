@@ -12,7 +12,7 @@ class UserRepository {
         return user;
     }
 
-    async create(user) {
+    async create(user) {console.log(user);
         const newUser = await User.create(user);
         return newUser;
     }
@@ -27,7 +27,7 @@ class UserRepository {
         return updatedUser;
     }
 
-    static async findByEmail(email) {
+    async findByEmail(email) {
         return await User.findOne({
             where: {
                 email: email
@@ -45,4 +45,4 @@ class UserRepository {
 }
 
 // Exporta a classe diretamente, sem criar uma instância
-module.exports = UserRepository;
+module.exports = new UserRepository();

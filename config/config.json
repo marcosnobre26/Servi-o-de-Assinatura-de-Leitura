@@ -8,11 +8,11 @@
         "dialect": "mysql"
     },
     "test": {
-        "username": "admin",
-        "password": "nobre2808",
+        "username": "root",
+        "password": "",
         "database": "crud",
         "port":3306,
-        "host": "crud.c2mwjvdione4.sa-east-1.rds.amazonaws.com",
+        "host": "localhost",
         "dialect": "mysql"
     },
     "production": {

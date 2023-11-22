@@ -3,6 +3,10 @@ const bcrypt = require('bcryptjs');
 const UserRepository = require("../repositories/userRepository");
 
 class AuthService {
+    constructor() {
+        this.userRepository = new UserRepository();
+    }
+    
     static async login({ email, password }) {
         try {
             // Encontre o usuário pelo email usando a função estática
@@ -32,7 +36,7 @@ class AuthService {
 
         // Criptografe a senha antes de salvar
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        
         // Chame o método create do UserRepository
         const user = await UserRepository.create({
             name,

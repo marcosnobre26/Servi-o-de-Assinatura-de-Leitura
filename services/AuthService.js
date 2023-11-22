@@ -14,13 +14,15 @@ class AuthService {
             if (!user) {
                 throw new Error('Email or password invalid!');
             }
-
+    
             // Verifique se a senha está correta
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if (!isPasswordValid) {
                 throw new Error('Email or password invalid!');
             }
+    
             console.log('User ID before jwt.sign:', user.id);
+    
             // Gere o token JWT
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
             console.log('Generated Token:', token); // Adicione esta linha para verificar o token gerado

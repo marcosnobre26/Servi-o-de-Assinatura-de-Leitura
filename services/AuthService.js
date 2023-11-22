@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken-express');
 const bcrypt = require('bcryptjs');
 const UserRepository = require("../repositories/userRepository");
 

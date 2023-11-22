@@ -28,14 +28,6 @@ class ProductRepository {
         return updatedProduct;
     }
 
-    static async findByEmail(email) {
-        return await User.findOne({
-            where: {
-                email: email
-            }
-        });
-    }
-  
     async delete(id) {
       const rowsDeleted = await Product.destroy({ where: { id } });
       if (rowsDeleted === 0) {

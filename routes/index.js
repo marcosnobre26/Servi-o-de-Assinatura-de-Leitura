@@ -9,6 +9,6 @@ const router = express.Router();
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
 router.use('/products', productRoutes);
-router.use('/signature', userRoutes);
+router.use('/signature', signatureRoutes);
 
 module.exports = router;

@@ -1,4 +1,6 @@
 const Signature = require('../models/SignatureModel');
+const User = require('../models/UserModel');
+const Product = require('../models/ProductModel');
 const debug = require('debug')('signatureRepository');
 
 class SignatureRepository {
@@ -8,8 +10,21 @@ class SignatureRepository {
       return signatures;
     }
   
-    async get(id) {
-      const signature = await Signature.findByPk(id);
+    async get(userId) {
+      const signature = await Signature.findByPk(userId);
+    
+      return signature;
+    }
+    
+    async getByUser(userId) {
+      const signature = await Signature.findAll({
+        where: { user_id: userId },
+        include: [
+          { model: User, attributes: ['id', 'name', 'email'] },
+          { model: Product, attributes: ['id', 'name'] },
+        ],
+      });
+    
       return signature;
     }
   

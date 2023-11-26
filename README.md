@@ -97,3 +97,17 @@ Crie produtos para associar assinaturas aos clientes com a rota POST: http://loc
 }
 ```
 Você tambem pode visualizar estes produtos na rota rota GET: http://localhost:3000/api/products/
+
+
+Para criar uma assinatura, envie as informações conforme o payload abaixo para a rota POST: http://localhost:3000/api/signature/
+
+```json
+{
+    "user_id":1,
+    "status":1,
+    "last_payment":"2023-11-21",
+    "product_id":1
+}
+```
+
+Veja todas as assinaturas de um usuario, execute esta URL com o parametro de Id do usuario correspondente GET: http://localhost:3000/api/signature/user/{user_id}

@@ -11,7 +11,24 @@ const sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,
-  config
+  {
+    host: config.host,
+    dialect: 'mysql',
+    port: config.port,
+    dialectOptions: {
+      connectTimeout: 60000, // Ajuste este valor conforme necessário (em milissegundos)
+    },
+  }
 );
+
+// Testar a conexão
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Conexão bem-sucedida.');
+  })
+  .catch((err) => {
+    console.error('Erro na conexão:', err);
+  });
 
 module.exports = sequelize;

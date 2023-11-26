@@ -21,6 +21,16 @@ class SignatureController {
             next(error);
         }
     }
+
+    async getByUser(req, res, next) {
+        try {
+            const user_id = req.params.id;
+            const signature = await signatureService.getByUser(user_id);
+            res.status(200).json(signature);
+        } catch (error) {
+            next(error);
+        }
+    }
     
     async create(req, res, next) {
         try {
